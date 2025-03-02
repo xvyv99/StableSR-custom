@@ -143,6 +143,7 @@ class RealESRGANDataset(data.Dataset):
         img_size = os.path.getsize(gt_path)
         img_size = img_size/1024
 
+        """
         while img_gt.shape[0] * img_gt.shape[1] < 384*384 or img_size<100:
             index = random.randint(0, self.__len__()-1)
             gt_path = self.paths[index]
@@ -152,6 +153,7 @@ class RealESRGANDataset(data.Dataset):
             img_gt = imfrombytes(img_bytes, float32=True)
             img_size = os.path.getsize(gt_path)
             img_size = img_size/1024
+        """
 
         # -------------------- Do augmentation for training: flip, rotation -------------------- #
         img_gt = augment(img_gt, self.opt['use_hflip'], self.opt['use_rot'])
